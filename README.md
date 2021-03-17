@@ -44,25 +44,20 @@ This is the flow of the currency conversion microservice.
 
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) is a [microframework](https://en.wikipedia.org/wiki/Flask_(web_framework)) written in Python. It is classified as a microframework because it does not require particular tools or libraries.
 
-# Prerequisites
-You need to have the following installed to complete the steps in this code pattern:
+# Steps
 
-* [Docker](https://www.docker.com/products/docker-desktop)
-* [IBM Cloud Account](https://cloud.ibm.com/registration)
-* [IBM RedHat OpenShift 4.3 Cluster](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster)
-* OpenShift CLI tool [oc](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cli_oc)
+## Create API key and Private Container Registry
 
-# Steps 
 
-Follow these steps to set up and run this code pattern locally and on the cloud. The steps are described in detail below.
+ic iam api-key-create ypyp-api-key --file ypyp-api-key
+ic cr region-set
+ic cr namespace-add ypyp-cr-namespace
+ic cr namespace-list -v
+ic cr image-list
 
-1. [Clone the GitHub repository locally](#1-clone-the-GitHub-repository-locally)
 
-2. [Build a docker image and run it locally](#2-build-and-run-a-docker-image-locally)
 
-3. [Deploy to IBM RedHat OpenShift 4 Cluster](#3-deploy-to-openshift-4-cluster)
-
-### 1. Clone the GitHub repository locally
+### Clone the GitHub repository
 
 Clone the `currencyexchange` GitHub repository locally.
 
@@ -75,7 +70,7 @@ cd python-ubi-openshift
 ```
 
 
-### 2. Build and run a docker image locally
+### Build and run a docker image 
 
 We showcase this method, by using the UBI.
 
@@ -122,14 +117,8 @@ Now let's build this docker image with the `UBI`.
 
 1. Build the docker image by running:
 
-### MacOS
 ```bash
 export DOCKERHUB_USERNAME=<your-dockerhub-username>
-docker build -t $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1 .
-```
-### Windows
-```bash
-SETX DOCKERHUB_USERNAME "your-dockerhub-username"
 docker build -t $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1 .
 ```
 
