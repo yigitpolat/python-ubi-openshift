@@ -108,8 +108,9 @@ Now let's build this docker image with the `UBI`.
 1. Build the docker image by running:
 
 ```bash
-export DOCKERHUB_USERNAME=<your-dockerhub-username>
-docker build -t $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1 .
+export CR_REGION=de.icr.io
+export CR_NAMESPACE=ypyp-registry
+docker build -t $CR_REGION/$CR_NAMESPACE/currencyexchange-py:v0.0.1 .
 ```
 
 2. Great! So, now lets run the image locally!
