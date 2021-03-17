@@ -142,6 +142,11 @@ docker push $CR_REGION/$CR_NAMESPACE/currencyexchange-py
 
 ### Login to your OpenShift 4 cluster
 
+Switch Account to Advowordk
+
+![account](./doc/images/accounts.png)
+
+
 ![click on the Web Console blue button](doc/images/OpenShift-OpenWebConsole.png)
 
 Launch the `Web Console` by clicking on the blue and white button ( annotated with a number(1) above )
