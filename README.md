@@ -171,9 +171,11 @@ oc new-project currencyexchange-py
 next add a new application
 
 ```bash
+export CR_REGION=de.icr.io
+export CR_NAMESPACE=ypyp-registry
 oc create secret docker-registry container-registry --docker-server=de.icr.io --docker-email=unused --docker-username=iamapikey --docker-password=<api-key> 
-oc secrets link default redhat-connect-sso --for=pull
-oc secrets link builder redhat-connect-sso
+oc secrets link default container-registry --for=pull
+oc secrets link builder container-registry
 oc new-app $CR_REGION/$CR_NAMESPACE/currencyexchange-py
 ```
 
