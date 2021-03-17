@@ -168,22 +168,13 @@ create a new project
 oc new-project currencyexchange-py
 ```
 
-you should be able to confirm this by typing:
-
-```bash
-oc project
-```
-and see
-
-![confirm project is setup](doc/images/OpenShift-project-confirm-cli.png)
-
-
-
-
 next add a new application
 
 ```bash
-oc new-app $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
+oc create secret docker-registry container-registry --docker-server=de.icr.io --docker-email=unused --docker-username=iamapikey--docker-password=<api-key> 
+oc secrets link default redhat-connect-sso --for=pull
+oc secrets link builder redhat-connect-sso
+oc new-app $CR_REGION/$CR_NAMESPACE/currencyexchange-py
 ```
 
 Great!  Now you should see
