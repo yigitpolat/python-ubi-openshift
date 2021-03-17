@@ -146,10 +146,10 @@ Switch Account to Advowordk
 
 ![account](./doc/images/accounts.png)
 
+Launch the `Web Console` by clicking on the blue and white button ( annotated with a number(1) above )
 
 ![click on the Web Console blue button](doc/images/OpenShift-OpenWebConsole.png)
 
-Launch the `Web Console` by clicking on the blue and white button ( annotated with a number(1) above )
 
 Once in the OpenShift Web Console screen, click on your username and choose 
 
