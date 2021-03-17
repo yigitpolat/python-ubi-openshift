@@ -110,19 +110,15 @@ Now let's build this docker image with the `UBI`.
 ```bash
 export CR_REGION=de.icr.io
 export CR_NAMESPACE=ypyp-registry
-docker build -t $CR_REGION/$CR_NAMESPACE/currencyexchange-py:v0.0.1 .
+docker build -t $CR_REGION/$CR_NAMESPACE/currencyexchange-py
 ```
 
 2. Great! So, now lets run the image locally!
 
 ```bash
-docker run -p 7878:7878 $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
-
-echo <api-key> | docker login -u "iamapikey" --password-stdin de.icr.io
-
-# push image to docker hub
-docker push $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
+docker run -p 7878:7878 $CR_REGION/$CR_NAMESPACE/currencyexchange-py
 ```
+
 
 At your command line run: `docker ps` and you should now confirm that the docker container for the currencyexchange microservice is up and running.
 
@@ -132,6 +128,14 @@ At your command line run: `docker ps` and you should now confirm that the docker
 > [http://127.0.0.1:7878](http://127.0.0.1:7878) for documentation about this API's endpoints and a `try-it-out` test harness to actually run the API calls.
 
 ![expected browser swagger](./doc/images/expected-browser-swagger.png)
+
+3. Lets push the image to the container registry:
+```
+echo <api-key> | docker login -u "iamapikey" --password-stdin $CR_REGION
+
+# push image to docker hub
+docker push $CR_REGION/$CR_NAMESPACE/currencyexchange-py
+```
 
 
 ## Deploy to OpenShift 4 cluster
