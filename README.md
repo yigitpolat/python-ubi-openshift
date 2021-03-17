@@ -65,7 +65,9 @@ ic cr image-list
 ```
 
 
-## Clone the GitHub repository
+## Build and run a docker image 
+
+### Clone the project
 
 Navigate to https://labs.play-with-docker.com/
 Create a Docker Account if it does not exists.
@@ -77,11 +79,7 @@ git clone https://github.com/IBM/python-ubi-openshift.git
 cd python-ubi-openshift
 ```
 
-
-## Build and run a docker image 
-
 ### What is UBI?
-
 
 #### Take a look at our [Dockerfile](./Dockerfile) and notice the `FROM` directive is using the UBI version 8 (core of Red Hat 8) base image.
 
@@ -104,6 +102,8 @@ The UBI comes in a few flavors:
 1.  Or language-specific runtime images (e.g. `node.js`, `python`, etc.)
 
 UBI allows one to use associated packages provided by `YUM repositories` which satisfy common application dependencies, like `httpd` (apache web server) etc.
+
+### Build & Run & Push container image
 
 1. Build the docker image by running:
 
