@@ -48,6 +48,11 @@ This is the flow of the currency conversion microservice.
 
 ## Create API key and Private Container Registry
 
+Create a shell environment on your account.
+
+![shell](./doc/images/shell.png)
+
+Configure your container image registry
 
 ```bash
 ic resource groups 
@@ -62,22 +67,27 @@ ic cr image-list
 
 ## Clone the GitHub repository
 
-Clone the `currencyexchange` GitHub repository locally.
+Navigate to https://labs.play-with-docker.com/
+Create a Docker Account if it does not exists.
 
-In a terminal, run the following:
+Clone the `currencyexchange` GitHub repository locally.
 
 ```bash
 git clone https://github.com/IBM/python-ubi-openshift.git
-
 cd python-ubi-openshift
 ```
 
 
 ## Build and run a docker image 
 
-We showcase this method, by using the UBI.
-
 ### What is UBI?
+
+
+#### Take a look at our [Dockerfile](./Dockerfile) and notice the `FROM` directive is using the UBI version 8 (core of Red Hat 8) base image.
+
+```yaml
+FROM registry.access.redhat.com/ubi8/ubi
+```
 
 #### Introducing UBI
 
@@ -94,16 +104,6 @@ The UBI comes in a few flavors:
 1.  Or language-specific runtime images (e.g. `node.js`, `python`, etc.)
 
 UBI allows one to use associated packages provided by `YUM repositories` which satisfy common application dependencies, like `httpd` (apache web server) etc.
-
-
-
-#### Take a look at our [Dockerfile](./Dockerfile) and notice the `FROM` directive is using the UBI version 8 (core of Red Hat 8) base image.
-
-```yaml
-FROM registry.access.redhat.com/ubi8/ubi
-```
-
-Now let's build this docker image with the `UBI`.
 
 1. Build the docker image by running:
 
