@@ -140,39 +140,6 @@ docker push $CR_REGION/$CR_NAMESPACE/currencyexchange-py
 
 ## Deploy to OpenShift 4 cluster
 
-2. Provision an [IBM RedHat OpenShift 4 Service](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster)
-and follow the set of instructions for creating a Container and Cluster.
-
-### Deploy the Python microservice image to OpenShift.
-
-You can deploy to OpenShift by either the Web Console browser applicaton, or by using the command line terminal. 
-
-We are going to use the `oc` command line tool in this code pattern. Please check that you have v4.1.0 or later installed.
-
-
-
-<details><summary><strong>
-Install or verify the oc tool
-</strong></summary>
- Run the command below
-
-```bash
-
-#aserctain what version of the oc cli you have installed
-oc version
-
-#You should have v4.1 or later installed.
-v4.1.0
-
-If you don't already have this installed, please follow instructions to do so here: [`oc` CLI documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cli_oc) 
-
-```
-</details>
-
-<br/>
-
-
-
 ### Login to your OpenShift 4 cluster
 
 ![click on the Web Console blue button](doc/images/OpenShift-OpenWebConsole.png)
