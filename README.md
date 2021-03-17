@@ -117,6 +117,11 @@ docker build -t $CR_REGION/$CR_NAMESPACE/currencyexchange-py:v0.0.1 .
 
 ```bash
 docker run -p 7878:7878 $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
+
+echo <api-key> | docker login -u "iamapikey" --password-stdin de.icr.io
+
+# push image to docker hub
+docker push $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
 ```
 
 At your command line run: `docker ps` and you should now confirm that the docker container for the currencyexchange microservice is up and running.
@@ -129,34 +134,7 @@ At your command line run: `docker ps` and you should now confirm that the docker
 ![expected browser swagger](./doc/images/expected-browser-swagger.png)
 
 
-### 3. Deploy to OpenShift 4 cluster
-
-```bash
-# build your docker image
-export DOCKERHUB_USERNAME=<your-dockerhub-username>
-
-docker build -t $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1 .
-
-echo <api-key> | docker login -u "iamapikey" --password-stdin de.icr.io
-
-# push image to docker hub
-docker push $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
-
-```
-<details><summary><strong>What a successful push to docker hub should look like</strong></summary>
-
-```bash
-The push refers to repository [docker.io/claraxxxxxx/currencyexchange-py]
-693f7ba0eeed: Pushed 
-225cfc6f0260: Pushed 
-2ddc888e45c8: Pushed 
-1aac3cbf59e3: Pushed 
-85f69e555a1b: Pushed 
-1295eae54c9d: Pushed 
-v0.0.1: digest: sha256:2aa41155a8bd44bb25tytytyt990ed4d5f455968ef88697463456f249a35654841d size: 1574
-```
-</details>
-
+## Deploy to OpenShift 4 cluster
 
 2. Provision an [IBM RedHat OpenShift 4 Service](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster)
 and follow the set of instructions for creating a Container and Cluster.
