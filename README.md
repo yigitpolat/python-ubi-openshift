@@ -49,12 +49,15 @@ This is the flow of the currency conversion microservice.
 ## Create API key and Private Container Registry
 
 
+```bash
+ic resource groups 
+ic target -g Default
 ic iam api-key-create ypyp-api-key --file ypyp-api-key
 ic cr region-set
-ic cr namespace-add ypyp-cr-namespace
+ic cr namespace-add ypyp-registry
 ic cr namespace-list -v
 ic cr image-list
-
+```
 
 
 ### Clone the GitHub repository
