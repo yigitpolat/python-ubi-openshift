@@ -105,19 +105,6 @@ FROM registry.access.redhat.com/ubi8/ubi
 
 Now let's build this docker image with the `UBI`.
 
-
-1. Make sure you are at the root directory of this application.
-
-1. Note your docker-hub username
-<details><summary><strong>How to find your docker hub credentials</strong></summary>
-
-> To download Docker Desktop you must create a Docker Hub account.
-
-> To find the username, you can click on at your Docker Desktop icon (Mac) toolbar 
-
-![Docker Desktop Find your logged-in username](./doc/images/docker-desktop-get-username.png)
-</details>
-
 1. Build the docker image by running:
 
 ```bash
@@ -125,40 +112,7 @@ export DOCKERHUB_USERNAME=<your-dockerhub-username>
 docker build -t $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1 .
 ```
 
-<details><summary><strong>Expected output details</strong></summary>
-
-Here is a truncated snippet of the successful output you should see:
-
-```bash
-Sending build context to Docker daemon  69.63MB
-Step 1/10 : FROM registry.access.redhat.com/ubi8/ubi
- ---> fd73e6738a95
-
- ...
-
-Collecting flask (from -r requirements.txt (line 13))
-  Downloading https://files.pythonhosted.org/packages/9b/93/628509b8d5dc749656a9641f4caf13540e2cdec85276964ff8f43bbb1d3b/Flask-1.1.1-py2.py3-none-any.whl (94kB)
-
- ...
-
-Successfully built 3b5631170697
-Successfully tagged <DOCKERHUB_USERNAME>/currencyexchange-py:v0.0.1
-```
-
-Notes:
-
-* The docker build process, pulled the RedHat 8 Universal Base Image from the redhat registry.
-
-* The base image is the generic image, i.e. ubi8/ubi.  We could have use the Python 3 language specic flavor of the image but opted for this version for 2 reasons:
-
-1. to show off the yum install features
-
-1. to show how a finer controlled version of the language could have been used, like in our case the latest version (at the time of writing) of Python version 3.8 (note to check docker file version to be sure!)
-
-
-</details>
-
-Great! So, now lets run the image locally!
+2. Great! So, now lets run the image locally!
 
 ```bash
 docker run -p 7878:7878 $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
@@ -176,16 +130,13 @@ At your command line run: `docker ps` and you should now confirm that the docker
 
 ### 3. Deploy to OpenShift 4 cluster
 
-1. To allow changes to the this microservice, create a repo on [Docker Cloud](https://cloud.docker.com/) where you can push the newly modified container. 
-
-
 ```bash
 # build your docker image
 export DOCKERHUB_USERNAME=<your-dockerhub-username>
 
 docker build -t $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1 .
 
-docker login
+echo <api-key> | docker login -u "iamapikey" --password-stdin de.icr.io
 
 # push image to docker hub
 docker push $DOCKERHUB_USERNAME/currencyexchange-py:v0.0.1
