@@ -55,6 +55,7 @@ Create a shell environment on your account.
 Configure your container image registry
 
 ```bash
+ic target
 ic resource groups 
 ic target -g Default
 ic iam api-key-create ypyp-api-key --file ypyp-api-key
