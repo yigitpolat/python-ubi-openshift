@@ -111,7 +111,7 @@ UBI allows one to use associated packages provided by `YUM repositories` which s
 ```bash
 export CR_REGION=de.icr.io
 export CR_NAMESPACE=ypyp-registry
-docker build -t $CR_REGION/$CR_NAMESPACE/currencyexchange-py
+docker build -t $CR_REGION/$CR_NAMESPACE/currencyexchange-py .
 ```
 
 2. Great! So, now lets run the image locally!
